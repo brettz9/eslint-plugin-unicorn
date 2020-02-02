@@ -40,8 +40,7 @@ const create = context => {
 			const {callee} = node;
 
 			if (node.arguments.length !== 1 ||
-				callee.type !== 'MemberExpression' ||
-				callee.computed
+				callee.type !== 'MemberExpression'
 			) {
 				return;
 			}

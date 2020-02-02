@@ -193,6 +193,12 @@ ruleTester.run('prefer-node-remove', rule, {
 			'foo.remove()',
 			'bar',
 			'foo'
+		),
+		invalidTestCase(
+			'foo[\'removeChild\'](bar)',
+			'foo.remove()',
+			'bar',
+			'foo'
 		)
 	]
 });
