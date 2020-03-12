@@ -65,6 +65,7 @@ Configure it in `package.json`.
 			"unicorn/prefer-event-key": "error",
 			"unicorn/prefer-flat-map": "error",
 			"unicorn/prefer-includes": "error",
+			"unicorn/prefer-match-all": "error",
 			"unicorn/prefer-modern-dom-apis": "error",
 			"unicorn/prefer-negative-index": "error",
 			"unicorn/prefer-node-append": "error",
@@ -119,6 +120,7 @@ Configure it in `package.json`.
 - [prefer-event-key](docs/rules/prefer-event-key.md) - Prefer `KeyboardEvent#key` over `KeyboardEvent#keyCode`. *(partly fixable)*
 - [prefer-flat-map](docs/rules/prefer-flat-map.md) - Prefer `.flatMap(…)` over `.map(…).flat()`. *(fixable)*
 - [prefer-includes](docs/rules/prefer-includes.md) - Prefer `.includes()` over `.indexOf()` when checking for existence or non-existence. *(fixable)*
+- [prefer-match-all](docs/rules/prefer-match-all.md) - Prefer `for (match of str.matchAll(regexp))` over `while ((match = regexp.exec(str)) !== null)`. *(fixable)*
 - [prefer-modern-dom-apis](docs/rules/prefer-modern-dom-apis.md) - Prefer `.before()` over `.insertBefore()`, `.replaceWith()` over `.replaceChild()`, prefer one of `.before()`, `.after()`, `.append()` or `.prepend()` over `insertAdjacentText()` and `insertAdjacentElement()`. *(fixable)*
 - [prefer-negative-index](docs/rules/prefer-negative-index.md) - Prefer negative index over `.length - index` for `{String,Array,TypedArray}#slice()` and `Array#splice()`. *(fixable)*
 - [prefer-node-append](docs/rules/prefer-node-append.md) - Prefer `Node#append()` over `Node#appendChild()`. *(fixable)*

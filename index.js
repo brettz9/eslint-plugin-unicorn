@@ -49,6 +49,7 @@ module.exports = {
 				'unicorn/prefer-event-key': 'error',
 				'unicorn/prefer-flat-map': 'error',
 				'unicorn/prefer-includes': 'error',
+				'unicorn/prefer-match-all': 'off',
 				'unicorn/prefer-modern-dom-apis': 'error',
 				'unicorn/prefer-negative-index': 'error',
 				'unicorn/prefer-node-append': 'error',
