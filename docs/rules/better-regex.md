@@ -28,6 +28,13 @@ const regex = /\d\.\w\-\D/i;
 
 ## Options
 
+### combineRepeatingPatterns
+
+Type: `boolean`
+Default: `true`
+
+Disables optimizations that affect the combining of repeated patterns. For example, preserves the "tt", "//", "ll", and "mm" in `/helllloooo/gi` rather than combining it as `/hel{4}o{4}/gi`.
+
 ### sortCharacterClasses
 
 Type: `boolean`\

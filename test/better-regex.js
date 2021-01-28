@@ -12,6 +12,12 @@ const createError = (original, optimized) => [
 	}
 ];
 
+const disableCombineRepeatingPatterns = [
+	{
+		combineRepeatingPatterns: false
+	}
+];
+
 const disableSortCharacterClassesOptions = [
 	{
 		sortCharacterClasses: false
@@ -44,6 +50,12 @@ test({
 		{
 			code: '/[GgHhIiå.Z:a-f"0-8%A*ä]/',
 			options: disableSortCharacterClassesOptions
+		},
+
+		// Should not combine repeating patterns (#769)
+		{
+			code: '/hhhhhellllllo/',
+			options: disableCombineRepeatingPatterns
 		},
 
 		// `RegExp()` constructor
@@ -178,12 +190,25 @@ test({
 			errors: createError('/[GgHhIiå.Z:a-f"0-8%A*ä]/', '/["%*.0-8:AG-IZa-iäå]/'),
 			output: '/["%*.0-8:AG-IZa-iäå]/'
 		},
+		{
+			code: '/helllloooo/gi',
+			errors: createError('/helllloooo/gi', '/hel{4}o{4}/gi'),
+			output: '/hel{4}o{4}/gi'
+		},
+
 		// Should still use shorthand when disabling sort character classes
 		{
 			code: '/[a0-9b]/',
 			options: disableSortCharacterClassesOptions,
 			errors: createError('/[a0-9b]/', '/[a\\db]/'),
 			output: '/[a\\db]/'
+		},
+		// Should still use sorting when disabling combining of repeat patterns
+		{
+			code: '/aaaaa[ecg]/',
+			options: disableCombineRepeatingPatterns,
+			errors: createError('/aaaaa[ecg]/', '/aaaaa[ceg]/'),
+			output: '/aaaaa[ceg]/'
 		},
 
 		// `RegExp()` constructor

@@ -10,12 +10,18 @@ const messages = {
 };
 
 const create = context => {
-	const {sortCharacterClasses} = context.options[0] || {};
+	const {
+		sortCharacterClasses, combineRepeatingPatterns
+	} = context.options[0] || {};
 
 	const ignoreList = [];
 
 	if (sortCharacterClasses === false) {
 		ignoreList.push('charClassClassrangesMerge');
+	}
+
+	if (combineRepeatingPatterns === false) {
+		ignoreList.push('combineRepeatingPatterns');
 	}
 
 	return {
@@ -86,6 +92,10 @@ const schema = [
 	{
 		type: 'object',
 		properties: {
+			combineRepeatingPatterns: {
+				type: 'boolean',
+				default: true
+			},
 			sortCharacterClasses: {
 				type: 'boolean',
 				default: true
